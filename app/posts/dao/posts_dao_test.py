@@ -70,15 +70,14 @@ class TestPostDao:
         assert pks == correct_pks, f"Неверный список постов для пользователя {user_name}"
 
 
-
     def test_search_check_type(self, posts_dao):
-        posts = posts_dao.search("a")
+        posts = posts_dao.search("а")
         assert type(posts) == list, "Результат поиска должен быть списком"
         assert type(posts[0]) == dict, "Элементы, найденные поиском должны быть словарями"
 
     def test_search_has_keys(self, posts_dao, keys_expected):
-        post = posts_dao.search("a")[0]
-        post_keys = set(post.keys())
+        posts = posts_dao.search("а")[0]
+        post_keys = set(posts.keys())
         assert post_keys == keys_expected, "Полученные ключи неверны"
 
 

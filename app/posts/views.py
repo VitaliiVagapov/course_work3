@@ -6,7 +6,7 @@ from app.posts.dao.comments_dao import CommentsDAO
 
 posts_blueprint = Blueprint('posts_blueprint', __name__, template_folder='templates')
 posts_dao = PostsDAO("data/posts.json")
-comments_dao = CommentsDAO("data/posts.json")
+comments_dao = CommentsDAO("data/comments.json")
 
 logger = logging.getLogger("basic")
 
@@ -14,7 +14,7 @@ logger = logging.getLogger("basic")
 def posts_all():
     logger.debug("Запрошены все посты")
     try:
-        posts = posts_dao.get_all
+        posts = posts_dao.get_all()
         return render_template("index.html", posts = posts)
 
     except:
@@ -34,7 +34,7 @@ def posts_one(post_pk):
         number_of_comments = len(comments)
         return render_template("post.html", post=post, comments=comments, number_of_comments=number_of_comments)
 
-@posts_blueprint.route('/search')
+@posts_blueprint.route('/search/')
 def posts_search():
 
     query = request.args.get("s", None)

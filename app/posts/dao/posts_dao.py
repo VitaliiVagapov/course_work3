@@ -7,14 +7,14 @@ class PostsDAO:
     def __init__(self, path):
         self.path = path
 
-    @staticmethod
-    def _load():
-        with open("../../../data/posts.json", "r", encoding="utf-8") as file:
+
+    def _load(self):
+        with open(self.path, "r", encoding="utf-8") as file:
             data = json.load(file)
         return data
 
     def get_all(self):
-        return self._load
+        return self._load()
 
     def get_by_pk(self, pk):
 
