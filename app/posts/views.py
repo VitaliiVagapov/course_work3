@@ -12,6 +12,7 @@ logger = logging.getLogger("basic")
 
 @posts_blueprint.route('/')
 def posts_all():
+
     logger.debug("Запрошены все посты")
     try:
         posts = posts_dao.get_all()
@@ -22,6 +23,7 @@ def posts_all():
 
 @posts_blueprint.route('/posts/<int:post_pk>')
 def posts_one(post_pk):
+
     logger.debug(f"Запрошен пост {post_pk}")
     try:
         post = posts_dao.get_by_pk(post_pk)

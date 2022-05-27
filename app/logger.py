@@ -1,7 +1,7 @@
 import logging
 
 def create_logger():
-    logger = logging.getLogger("bacik")
+    logger = logging.getLogger("basic")
     logger.setLevel("DEBUG")
 
     file_handler = logging.FileHandler("api.log")
